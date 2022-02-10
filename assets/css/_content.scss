@@ -27,5 +27,14 @@ main {
         height: 100px;
 
         background-color: pink;
+
+        #control{
+            height: 20px;
+            width: 100%;
+            background-color: orange;
+            display: flex;
+        }
     }
+
+    
 }

@@ -13,7 +13,7 @@
         <script src="./assets/js/audio.js" defer></script>
         
         <!-- FontsAwesome -->
-        <!-- <script src="https://kit.fontawesome.com/0a50be58a8.js" crossorigin="anonymous"></script> -->
+        <script src="https://kit.fontawesome.com/0a50be58a8.js" crossorigin="anonymous"></script>
 
         <title>XXXXXXXXX</title>
     </head>
@@ -33,7 +33,14 @@
         
         <main>
             <section id="image"></section>
-            <section id="controllers"></section>
+            <section id="controllers">
+                <div id="back"><i class="fa-solid fa-backward-fast"></i></div>
+                <div id="play"><i class="fa-solid fa-play"></i></div>
+                <div id="pause"><i class="fa-solid fa-pause"></i></div>
+                <div id="mute"><i class="fa-solid fa-volume-xmark"></i></div>
+                <div id="next"><i class="fa-solid fa-forward-fast"></i></div>
+                <audio id="control"></audio>
+            </section>
         </main>
     </body>
 </html>
