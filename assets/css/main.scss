@@ -1,0 +1,32 @@
+@import "colors";
+@import "sizes";
+@import "fonts";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: $all;
+    height: $all;
+
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: $secondary;
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
