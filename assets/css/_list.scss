@@ -1,0 +1,18 @@
+@import "colors";
+
+
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+    }
+
+    
+}
