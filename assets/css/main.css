@@ -29,18 +29,22 @@ main #image {
 }
 
 main #controllers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 70%;
   height: 100px;
   background-color: pink;
 }
 
-main #controllers #control {
-  height: 20px;
-  width: 100%;
-  background-color: orange;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+main #controllers i {
+  font-size: 3rem;
 }
 
 aside {
