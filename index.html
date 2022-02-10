@@ -24,22 +24,32 @@
                 <section id="switch"></section>
                 <h2>Video</h2>
             </header>
-
+        
             <section id="list" class="left">
-                <section id="audioList"></section>
+                <section id="audioList">
+                    <div>
+                        <p id="title"></p>
+                        <p id="artist"></p>
+                    </div>
+                </section>
                 <section id="videoList"></section>
             </section>
         </aside>
         
         <main>
-            <section id="image"></section>
+            <section id="content">
+                <img src="" alt="Imagen canción">
+            </section>
+            <div class="duration">
+                <input type="range" min="0" max="100" id="duration_slider"/> <!--CHANGEDURATION-->
+            </div>
             <section id="controllers">
-                <div id="back"><i class="fas fa-fast-backward"></i></div>
-                <div id="play"><i class="fas fa-play"></i></div>
-                <div id="pause"><i class="fas fa-pause"></i></div>
-                <div id="mute"><i class="fas fa-volume-mute"></i></i></div>
-                <div id="next"><i class="fas fa-fast-forward"></i></div>
-                <audio id="control"></audio>
+                <button id="previous"><i class="fas fa-fast-backward" aria-hidden="true"></i></button> <!--PREVIOUS SONG-->
+                <button id="play"><i class="fas fa-play"  aria-hidden="true"></i></button> <!--JUSTPLAY-->
+                <i class="fas fa-volume-mute" id="volume-icon" aria-hidden="true"></i> <!-- EVENTO mute_sound-->
+                <input type="range" min="0" max="100" value="90" id="volume-range"/> <!--EVENTO volume_change-->
+                <button id="next"><i class="fas fa-fast-forward"></i></button> <!--NEXT SONG-->
+                
             </section>
         </main>
     </body>
