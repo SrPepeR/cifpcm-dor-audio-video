@@ -1,6 +1,3 @@
-@import "colors";
-
-
 aside {
     display: flex;
     flex-direction: column;
@@ -11,8 +8,19 @@ aside {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 15%;
+        min-height: 60px;
+        max-height: 100px;
+
         background-color: red;
+
+        h2 {
+            font-size: 1.8rem;
+        }
     }
 
-    
+    #list {
+        flex-grow: 1;
+        background-color: green;
+    }
 }

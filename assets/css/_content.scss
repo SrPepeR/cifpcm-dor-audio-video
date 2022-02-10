@@ -3,5 +3,29 @@
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    align-items: center;
+
     width: 100%;
+
+    background-color: grey;
+
+    #image {
+        width: $image_size;
+        height: $image_size;
+
+        background-color: blue;
+    }
+
+    #controllers {
+        width: 70%;
+        //TODO REMOVE height
+        height: 100px;
+
+        background-color: pink;
+    }
 }
