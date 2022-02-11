@@ -1,6 +1,7 @@
 @import "colors";
 @import "sizes";
 @import "fonts";
+@import "header";
 
 @import "content";
 @import "list";
@@ -29,7 +30,6 @@ section {
 
 a {
     text-decoration: none;
-    color: $secondary;
 }
 
 ul {

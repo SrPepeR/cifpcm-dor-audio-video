@@ -1,3 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+header #contSwitch {
+  background: #1b1b1b;
+  border: 1px solid #e4e4e4;
+  border-radius: 0.3em;
+  width: 65px;
+  height: 28px;
+  margin-right: 20px;
+}
+
+header #contSwitch #switch {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  margin-top: .2px;
+  border: 1px solid white;
+  border-radius: 0.3em;
+  background: #e4e4e4;
+  left: 2%;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+header #contSwitch .mover {
+  left: 55%;
+}
+
 .hide {
   display: none !important;
 }
@@ -125,6 +152,14 @@ main #data #info {
   color: #e4e4e4;
 }
 
+main #data #info #title {
+  font-family: "Helvetica";
+}
+
+main #data #info #artist {
+  font-family: "Arial";
+}
+
 main div > i {
   cursor: pointer;
   padding: 5px;
@@ -210,7 +245,6 @@ section {
 
 a {
   text-decoration: none;
-  color: "";
 }
 
 ul {
