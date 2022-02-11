@@ -1,4 +1,4 @@
-let All_videos =[
+let VIDEOS =[
     {
         name: "La trompeta",
         singer:"El Dandy de Barcelona",

@@ -21,7 +21,41 @@ aside {
     }
 
     #list {
+        display: flex;
+
         flex-grow: 1;
+        width: 100%;
         background-color: $color_primary;
+
+        &>section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &#audioList.left {
+                width: 100%;
+            }
+
+            &#videoList.left {
+                width: 0;
+            }
+
+            .list-element {
+                .img {
+
+                }
+
+                .text {
+
+                    .title {
+
+                    }
+
+                    .owner {
+
+                    }
+                }
+            }
+        }
     }
 }

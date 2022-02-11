@@ -177,10 +177,35 @@ aside header h2 {
 }
 
 aside #list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  width: 100%;
   background-color: #2B2B2B;
+}
+
+aside #list > section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+aside #list > section#audioList.left {
+  width: 100%;
+}
+
+aside #list > section#videoList.left {
+  width: 0;
 }
 
 * {
@@ -210,7 +235,6 @@ section {
 
 a {
   text-decoration: none;
-  color: "";
 }
 
 ul {
