@@ -1,26 +1,30 @@
 const DOM = {
-
     //BOTONES
-    botonBack : document.getElementById("previous"),
-    botonPlay: document.getElementById("play"),
-    botonPause: document.getElementById("pause"),
-    botonNext: document.getElementById("next"),
-    botonVolume: document.getElementById("volume-icon"),
-    volumeRange: document.getElementById("volume-range"),
+    botonBack : document.querySelector("#previous"),
+    botonPlay: document.querySelector("#play"),
+    botonPause: document.querySelector("#pause"),
+    botonNext: document.querySelector("#next"),
+    botonVolume: document.querySelector("#volume"),
+    botonVolumeIcon: document.querySelector("#volume i"),
+    volumeRange: document.querySelector("#volume-range"),
 
     //BARRA DURACION
-    barraDuracion: document.getElementById("duration_slider"),
+    current: document.querySelector("#current_duration"),
+    barraDuracion: document.querySelector("#durationSlider"),
+    all: document.querySelector("#all_duration"),
 
     //IMAGEN CANCION
     title: document.getElementById("title"),
     artist: document.getElementById("artist"),
-    imagenCancion: document.querySelector("#content img"),
+    imagenCancion: document.querySelector(".image")
 };
 
 let index_no = 0;
 let playing_song = false;
 
 let track = document.createElement("audio");
+
+let lastVolume = 0.9;
 
 let All_song =[
     {
@@ -38,7 +42,7 @@ let All_song =[
     {
         name: "Tokyo Drift",
         path: "./assets/audio/CRUZ_CAFUNÉ_TOKYO_DRIFT_AUDIO.mp3",
-        img: "./assets/img/Cruz_cafune - copia.jpg",
+        img: "./assets/img/Cruz_cafune.png",
         singer:"Cruz Cafune",
     }
 ];
@@ -49,49 +53,33 @@ function load_track(index_no){
     reset_slider();
     track.src = All_song[index_no].path;
     DOM.title.textContent= All_song[index_no].name;
-    DOM.imagenCancion.src = All_song[index_no].img;
+    DOM.imagenCancion.style.backgroundImage = "url(" + All_song[index_no].img + ")";
     DOM.artist.textContent = All_song[index_no].singer;
     track.load();
     timer = setInterval(range_slider , 1000);
 }
-load_track(index_no);
 
 
 function reset_slider(){
     DOM.barraDuracion.value = 0;
-}
-
-if(track.ended){
-    play.innerHTML = '<i class="fa fa-play"></i>';
-    if (autoplay == 1)
-    {
-        index_no +=1;
-        load_track(index_no);
-        playsong();
-    }
+    DOM.current.textContent = "00:00";
 }
 
 // JUSTPLAY
 function justplay(){
-    if(playing_song == false)
-    {
-        playsong();
-    }
-    else
-    {
-        pausesong();
+    if (!track.ended) {
+        if(playing_song == false)
+        {
+            playsong();
+        }
+        else
+        {
+            pausesong();
+        }
+    } else {
+        next_song();
     }
 }
-
-// FUNCIÓN IIFE
-(function(){
-    DOM.botonNext.addEventListener("click", next_song);
-    DOM.botonBack.addEventListener("click", previous_song);
-    DOM.botonPlay.addEventListener("click", justplay);
-    DOM.barraDuracion.addEventListener("click", change_duration);
-    DOM.botonVolume.addEventListener("click", mute_sound);
-    DOM.volumeRange.addEventListener("change", volume_change);
-})()
 
 function playsong(){
     track.play();
@@ -129,15 +117,14 @@ function previous_song(){
     }
     else
     {
-        index_no = All_song.length;
+        index_no = All_song.length - 1;
         load_track(index_no);
         playsong();
     }
 }
 
 function volume_change(){
-    volume_show.innerHTML = recent.volume.value;
-    track.volume = recent_volume.value / 100;
+    track.volume = DOM.volumeRange.value / 100;
 }
 
 function change_duration(){
@@ -150,11 +137,69 @@ function range_slider(){
 
     if(!isNaN(track.duration)){
         position = track.currentTime * (100 /  track.duration);
-        slider.value = position;
+        DOM.barraDuracion.value = position;
+
+        DOM.current.textContent = getTime(track.currentTime);
+        DOM.all.textContent = getTime(track.duration);
+    }
+
+    if  (track.ended) {
+        DOM.botonPlay.innerHTML = '<i class="fa fa-play"></i>';
     }
 }
 
-function mute_sound(){
-    track.volume = 0;
-    volume.volume = 0;
+function getTime (time) {
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+    time = Math.round(time);
+
+    hours = Math.floor(time / 3600);
+    time = time - hours * 3600;
+    minutes = Math.floor(time/60);
+    seconds = time - minutes * 60;
+
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+
+    return hours + ":" + minutes + ":" + seconds;
 }
+
+function mute_sound(){
+    if (track.volume == 0) {
+        // UNMUTE
+        track.volume = lastVolume;
+        DOM.botonVolumeIcon.classList.remove("fa-volume-mute");
+        DOM.botonVolumeIcon.classList.add("fa-volume-down");
+    } else {
+        // MUTE
+        lastVolume = track.volume;
+        track.volume = 0;
+        DOM.botonVolumeIcon.classList.remove("fa-volume-down");
+        DOM.botonVolumeIcon.classList.add("fa-volume-mute");
+    }
+    
+    DOM.volumeRange.value = track.volume * 100;
+}
+
+
+// FUNCIÓN IIFE
+// (function(){
+    DOM.botonNext.addEventListener("click", next_song);
+    DOM.botonBack.addEventListener("click", previous_song);
+    DOM.botonPlay.addEventListener("click", justplay);
+    DOM.barraDuracion.addEventListener("click", change_duration);
+    DOM.botonVolume.addEventListener("click", mute_sound);
+    DOM.volumeRange.addEventListener("change", volume_change);
+
+    load_track(index_no);
+// })()

@@ -20,36 +20,45 @@
     <body>
         <aside>
             <header>
-                <h2>Audio</h2>
+                <h3>Audio</h3>
                 <section id="switch"></section>
-                <h2>Video</h2>
+                <h3>Video</h3>
             </header>
         
             <section id="list" class="left">
-                <section id="audioList">
-                    <div>
-                        <p id="title"></p>
-                        <p id="artist"></p>
-                    </div>
-                </section>
+                <section id="audioList"></section>
                 <section id="videoList"></section>
             </section>
         </aside>
         
         <main>
             <section id="content">
-                <img src="" alt="Imagen canción">
+                <section class="image" alt="Imagen canción"></section>
             </section>
-            <div class="duration">
-                <input type="range" min="0" max="100" id="duration_slider"/> <!--CHANGEDURATION-->
-            </div>
-            <section id="controllers">
-                <button id="previous"><i class="fas fa-fast-backward" aria-hidden="true"></i></button> <!--PREVIOUS SONG-->
-                <button id="play"><i class="fas fa-play"  aria-hidden="true"></i></button> <!--JUSTPLAY-->
-                <i class="fas fa-volume-mute" id="volume-icon" aria-hidden="true"></i> <!-- EVENTO mute_sound-->
-                <input type="range" min="0" max="100" value="90" id="volume-range"/> <!--EVENTO volume_change-->
-                <button id="next"><i class="fas fa-fast-forward"></i></button> <!--NEXT SONG-->
-                
+
+            <section id="duration">
+                <h5 id="current_duration">00:00</h5>
+                <input type="range" min="0" max="100" value="0" id="durationSlider"/> <!--CHANGEDURATION-->
+                <h5 id="all_duration">00:00</h5>
+            </section>
+            
+            <section id="data">
+                <section id="info">
+                    <h2 id="title"></h2>
+                    <h5 id="artist"></h5>
+                </section>
+
+                <section id="controllers">
+                    <section id="normal">
+                        <div id="previous" tabindex="0"><i class="fas fa-fast-backward" aria-hidden="true"></i></div> <!--PREVIOUS SONG-->
+                        <div id="play"><i class="fas fa-play"  aria-hidden="true"></i></div> <!--JUSTPLAY-->
+                        <div id="next"><i class="fas fa-fast-forward"></i></div> <!--NEXT SONG-->
+                    </section>
+                    <section id="volumeBar">
+                        <div id="volume"><i class="fas fa-volume-down" aria-hidden="true"></i></div> <!-- EVENTO mute_sound-->
+                        <input type="range" min="0" max="100" value="90" id="volume-range"/> <!--EVENTO volume_change-->
+                    </section>
+                </section>
             </section>
         </main>
     </body>

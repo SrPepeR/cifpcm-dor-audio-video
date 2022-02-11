@@ -19,31 +19,128 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background-color: grey;
+  background-color: #3b3b3b;
+  color: #e4e4e4;
 }
 
-main #image {
+main #content {
+  background-color: #fff;
+}
+
+main #content .image {
   width: 300px;
   height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 1px;
 }
 
-main #controllers {
+main #duration {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+}
+
+main #duration #durationSlider {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main #data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  margin: 3% 0;
+}
+
+main #data #controllers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding-top: 3%;
+}
+
+main #data #controllers #normal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 70%;
-  height: 100px;
-  background-color: pink;
+  width: 100%;
 }
 
-main #controllers i {
-  font-size: 3rem;
+main #data #controllers #normal i {
+  font-size: 2.8rem;
+}
+
+main #data #controllers #volumeBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 3%;
+}
+
+main #data #controllers #volumeBar i {
+  font-size: 2rem;
+}
+
+main #data #controllers #volumeBar #volume-range {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main #data #info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #e4e4e4;
+}
+
+main div > i {
+  cursor: pointer;
+  padding: 5px;
+}
+
+main div {
+  color: black;
+}
+
+main div:hover {
+  background-color: #2B2B2B;
+  border-radius: 10%;
+}
+
+main div:active {
+  color: #e4e4e4;
 }
 
 aside {
@@ -71,7 +168,8 @@ aside header {
   height: 15%;
   min-height: 60px;
   max-height: 100px;
-  background-color: red;
+  background-color: #1b1b1b;
+  color: #e4e4e4;
 }
 
 aside header h2 {
@@ -82,7 +180,7 @@ aside #list {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  background-color: green;
+  background-color: #2B2B2B;
 }
 
 * {
@@ -120,7 +218,7 @@ ul {
           padding-inline-start: 0;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, h4, h5, p {
   margin: 0;
 }
 /*# sourceMappingURL=main.css.map */
