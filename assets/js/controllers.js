@@ -171,19 +171,11 @@ function range_slider(){
 }
 
 function getTime (time) {
-    var hours = 0;
     var minutes = 0;
     var seconds = 0;
     time = Math.round(time);
-
-    hours = Math.floor(time / 3600);
-    time = time - hours * 3600;
     minutes = Math.floor(time/60);
     seconds = time - minutes * 60;
-
-    if (hours < 10) {
-        hours = "0" + hours;
-    }
 
     if (minutes < 10) {
         minutes = "0" + minutes;
@@ -193,7 +185,7 @@ function getTime (time) {
         seconds = "0" + seconds;
     }
 
-    return hours + ":" + minutes + ":" + seconds;
+    return minutes + ":" + seconds;
 }
 
 function mute_sound(){
