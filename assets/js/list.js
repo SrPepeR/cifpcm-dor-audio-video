@@ -1,21 +1,33 @@
 const LIST_DOM = {
-    list: document.querySelector("#list"),
-    audioList: document.querySelector("#audioList"),
-    videoList: document.querySelector("#videoList")
+    list: document.querySelector("#list")
 };
+
+var songs = new Array();
 
 loadLists();
 
 function loadLists () {
+    var left = document.createElement("section");
+    left.classList.add("list");
+
+    songs = new Array();
+
     //AUDIO LIST
-    SONGS.forEach(song => {
+    SONGS.forEach((song, index) => {
         var songInfo = document.createElement("div");
         songInfo.id = song.name;
         songInfo.classList.add("list-element");
         
-        var songImg = document.createElement("img");
+        var songImg = document.createElement("div");
         songImg.classList.add("img");
-        songImg.src = song.img;
+        songImg.style.backgroundImage = "url(" + song.img + ")";
+
+        var playing = document.createElement("i");
+        playing.classList.add("playing");
+        playing.classList.add("fa");
+        playing.classList.add("fa-play");
+
+        songImg.appendChild(playing);
 
         var songText = document.createElement("section");
         songText.classList.add("text");
@@ -33,9 +45,31 @@ function loadLists () {
 
         songInfo.appendChild(songImg);
         songInfo.appendChild(songText);
+
+        if (index == 0) {
+            songInfo.classList.add("active");
+        }
         
-        LIST_DOM.audioList.appendChild(songInfo);
+        left.appendChild(songInfo);
+        songInfo.addEventListener("click", ()=>{changeTrack(songInfo, songs)})
+
+        songs.push(songInfo);
     });
 
+    LIST_DOM.list.appendChild(left);
+
     //TODO VIDEO LIST
+}
+
+function changeTrack (element, tracks) {
+    var index = tracks.indexOf(element);
+
+    clearList(index, tracks);
+    load_tracks(SONGS, index, AUDIO_DOM.imagenCancion);
+}
+
+function clearList (index, tracks) {
+    tracks.forEach((element) => {element.classList.remove("active")});
+
+    tracks[index].classList.add("active");
 }

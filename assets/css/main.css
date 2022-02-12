@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 header #contSwitch {
-  background: #1b1b1b;
-  border: 1px solid #e4e4e4;
+  background: #000000;
+  border: 1px solid #797b7a;
   border-radius: 0.3em;
   width: 65px;
   height: 28px;
@@ -15,7 +15,7 @@ header #contSwitch #switch {
   margin-top: .2px;
   border: 1px solid white;
   border-radius: 0.3em;
-  background: #e4e4e4;
+  background: #797b7a;
   left: 2%;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
@@ -46,12 +46,8 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background-color: #3b3b3b;
-  color: #e4e4e4;
-}
-
-main #content {
-  background-color: #fff;
+  background-color: #121212;
+  color: #797b7a;
 }
 
 main #content .image {
@@ -121,6 +117,15 @@ main #data #controllers #normal {
 
 main #data #controllers #normal i {
   font-size: 2.8rem;
+  color: #797b7a;
+}
+
+main #data #controllers #normal i:hover {
+  color: #fff;
+}
+
+main #data #controllers #normal i:active {
+  color: #797b7a;
 }
 
 main #data #controllers #volumeBar {
@@ -149,7 +154,7 @@ main #data #info {
       -ms-flex-direction: column;
           flex-direction: column;
   text-align: center;
-  color: #e4e4e4;
+  color: #fff;
 }
 
 main #data #info #title {
@@ -166,16 +171,15 @@ main div > i {
 }
 
 main div {
-  color: black;
+  color: #797b7a;
 }
 
 main div:hover {
-  background-color: #2B2B2B;
-  border-radius: 10%;
+  color: #fff;
 }
 
 main div:active {
-  color: #e4e4e4;
+  color: #797b7a;
 }
 
 aside {
@@ -187,6 +191,7 @@ aside {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 30%;
+  min-width: 300px;
   height: 100%;
 }
 
@@ -203,26 +208,27 @@ aside header {
   height: 15%;
   min-height: 60px;
   max-height: 100px;
-  background-color: #1b1b1b;
-  color: #e4e4e4;
+  width: 100%;
+  background-color: #000000;
+  color: #fff;
 }
 
-aside header h2 {
-  font-size: 1.8rem;
+aside header h3 {
+  font-size: 1.5rem;
 }
 
 aside #list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #000000;
   width: 100%;
-  background-color: #2B2B2B;
 }
 
-aside #list > section {
+aside #list .list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -233,14 +239,101 @@ aside #list > section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 
-aside #list > section#audioList.left {
+aside #list .list .list-element {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
+  height: 80px;
+  padding: 0 5%;
 }
 
-aside #list > section#videoList.left {
-  width: 0;
+aside #list .list .list-element .img {
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 20px;
+}
+
+aside #list .list .list-element .img .playing {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  font-size: 1.6rem;
+  color: #1c8b00;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+aside #list .list .list-element .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+aside #list .list .list-element .text .title {
+  font-family: "Helvetica";
+  font-size: 1.2rem;
+  color: #797b7a;
+  font-weight: 200;
+}
+
+aside #list .list .list-element .text .owner {
+  font-family: "Arial";
+  font-size: 0.9rem;
+  color: #797b7a;
+  font-weight: 100;
+}
+
+aside #list .list .list-element.active {
+  background-color: rgba(30, 215, 96, 0.5);
+}
+
+aside #list .list .list-element.active .img .playing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+aside #list .list .list-element.active .title {
+  font-weight: bolder;
+  color: white;
+}
+
+aside #list .list .list-element.active .owner {
+  font-weight: bold;
+  color: white;
+}
+
+aside #list .list .list-element.active:hover {
+  background-color: rgba(30, 215, 96, 0.5);
+}
+
+aside #list .list .list-element:hover {
+  background-color: rgba(30, 215, 96, 0.25);
+}
+
+aside #list .list .list-element:active {
+  background-color: rgba(30, 215, 96, 0.5);
 }
 
 * {

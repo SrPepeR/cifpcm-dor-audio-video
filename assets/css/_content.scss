@@ -18,8 +18,6 @@ main {
     color: $text_light;
 
     #content {
-        background-color: #fff;
-
         .image {
             width: $image_size;
             height: $image_size;
@@ -67,6 +65,15 @@ main {
 
                 i {
                     font-size: 2.8rem;
+                    color: $text_light;
+
+                    &:hover {
+                        color: $text_light_max;
+                    }
+
+                    &:active {
+                        color: $text_light;
+                    }
                 }
             }
 
@@ -90,13 +97,13 @@ main {
             flex-direction: column;
             text-align: center;
 
-            color: $text_light;
+            color: $text_light_max;
 
-            #title{
+            #title {
                 font-family: $primary_font;
             }
 
-            #artist{
+            #artist {
                 font-family: $secondary_font;
             }
         }
@@ -108,12 +115,11 @@ main {
     }
 
     div {
-        color: black;
+        color: $text_light;
     }
 
     div:hover {
-        background-color: $color_primary;
-        border-radius: 10%;
+        color: $text_light_max;
     }
 
     div:active {
