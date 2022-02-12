@@ -30,7 +30,7 @@ let playing = false;
 
 let track = document.createElement("audio");
 
-let lastVolume = 0.9;
+let lastVolume = 0.7;
 
 var tracks;
 var display;
@@ -76,12 +76,24 @@ function play(){
     track.play();
     playing = true;
     CONTROLLERS_DOM.botonPlay.innerHTML = '<i class="fa fa-pause"></i>';
+
+    if (tracks == SONGS) {
+        playingStateChanged(index_no, songs, true);
+    } else {
+        playingStateChanged(index_no, videos, true);
+    }
 }
 
 function pause(){
     track.pause();
     playing = false;
     CONTROLLERS_DOM.botonPlay.innerHTML = '<i class="fa fa-play"></i>';
+
+    if (tracks == SONGS) {
+        playingStateChanged(index_no, songs, false);
+    } else {
+        playingStateChanged(index_no, videos, false);
+    }
 }
 
 function next(){
@@ -97,6 +109,12 @@ function next(){
         load_tracks(tracks, index_no, display);
         play();
     }
+    
+    if (tracks == SONGS) {
+        clearList(index_no, songs);
+    } else {
+        clearList(index_no, videos);
+    }
 }
 
 function previous(){
@@ -111,6 +129,12 @@ function previous(){
         index_no = tracks.length - 1;
         load_tracks(tracks, index_no, display);
         play();
+    }
+    
+    if (tracks == SONGS) {
+        clearList(index_no, songs);
+    } else {
+        clearList(index_no, videos);
     }
 }
 

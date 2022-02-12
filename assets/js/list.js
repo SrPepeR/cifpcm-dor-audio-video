@@ -64,12 +64,29 @@ function loadLists () {
 function changeTrack (element, tracks) {
     var index = tracks.indexOf(element);
 
-    clearList(index, tracks);
-    load_tracks(SONGS, index, AUDIO_DOM.imagenCancion);
+    if (index != index_no) {
+        // Different song
+        index_no = index;
+        clearList(index, tracks);
+        pause();
+        load_tracks(SONGS, index, AUDIO_DOM.imagenCancion);
+    } else {
+        justplay();
+    }
 }
 
 function clearList (index, tracks) {
     tracks.forEach((element) => {element.classList.remove("active")});
 
     tracks[index].classList.add("active");
+}
+
+function playingStateChanged (index, tracks, playing) {
+    if (playing) {
+        tracks[index].firstChild.firstChild.classList.remove("fa-play");
+        tracks[index].firstChild.firstChild.classList.add("fa-pause");
+    } else {
+        tracks[index].firstChild.firstChild.classList.remove("fa-pause");
+        tracks[index].firstChild.firstChild.classList.add("fa-play");
+    }
 }

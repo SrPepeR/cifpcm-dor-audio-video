@@ -29,6 +29,12 @@ header #contSwitch .mover {
   display: none !important;
 }
 
+.show {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -294,14 +300,14 @@ aside #list .list .list-element .text .title {
   font-family: "Helvetica";
   font-size: 1.2rem;
   color: #797b7a;
-  font-weight: 200;
+  font-weight: bold;
 }
 
 aside #list .list .list-element .text .owner {
   font-family: "Arial";
   font-size: 0.9rem;
   color: #797b7a;
-  font-weight: 100;
+  font-weight: normal;
 }
 
 aside #list .list .list-element.active {
