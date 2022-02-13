@@ -7,6 +7,7 @@ const CONTROLLERS_DOM = {
     botonVolume: document.querySelector("#volume"),
     botonVolumeIcon: document.querySelector("#volume i"),
     volumeRange: document.querySelector("#volume-range"),
+    loop: document.querySelector("#loop"),
 
     //BARRA DURACION
     current: document.querySelector("#current_duration"),
@@ -24,6 +25,7 @@ CONTROLLERS_DOM.botonPlay.addEventListener("click", justplay);
 CONTROLLERS_DOM.barraDuracion.addEventListener("click", change_duration);
 CONTROLLERS_DOM.botonVolume.addEventListener("click", mute_sound);
 CONTROLLERS_DOM.volumeRange.addEventListener("change", volume_change);
+CONTROLLERS_DOM.loop.addEventListener("click", loopUnloop);
 
 let index_no = 0;
 let playing = false;
@@ -168,6 +170,8 @@ function range_slider(){
     if  (track.ended) {
         CONTROLLERS_DOM.botonPlay.innerHTML = '<i class="fa fa-play"></i>';
     }
+
+    handleInputChange(CONTROLLERS_DOM.barraDuracion);
 }
 
 function getTime (time) {
@@ -203,4 +207,9 @@ function mute_sound(){
     }
     
     CONTROLLERS_DOM.volumeRange.value = track.volume * 100;
+}
+
+function loopUnloop () {
+    track.loop = !track.loop;
+    CONTROLLERS_DOM.loop.classList.toggle("active");
 }

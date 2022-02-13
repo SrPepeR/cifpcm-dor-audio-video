@@ -2,20 +2,23 @@ aside {
     display: flex;
     flex-direction: column;
     width: 30%;
-    min-width: 300px;
+    min-width: 270px;
     height: 100%;
+    
+    background-color: $color_dark;
 
     header {
         display: flex;
         justify-content: center;
         align-items: center;
 
+        cursor: default;
+
         height: 15%;
         min-height: 60px;
         max-height: 100px;
         width: 100%;
 
-        background-color: $color_dark;
         color: $text_light_max;
 
         h3 {
@@ -27,8 +30,6 @@ aside {
         flex-grow: 1;
         display: flex;
 
-        // background-image: linear-gradient(to bottom, $color_dark, $color_primary 90%);
-        background-color: $color_dark;
         width: 100%;
 
         .list {
@@ -94,7 +95,7 @@ aside {
                 }
 
                 &.active {
-                    background-color: $text_accent_transparent;
+                    background-image: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
 
                     & .img .playing {
                         display: flex;
@@ -116,13 +117,39 @@ aside {
                 }
 
                 &:hover {
-                    background-color: $text_accent_transparent_mid;
+                    background-image: linear-gradient(to right, $text_accent_transparent_mid, $color_dark 90%);
                 }
 
                 &:active {
-                    background-color: $text_accent_transparent;
+                    background-image: linear-gradient(to right, $text_accent_transparent, $color_dark 90%);
                 }
             }
+        }
+    }
+
+    footer {
+        height: 10%;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo {
+            width: 50px;
+            height: 50px;
+
+            background-image: url("../img/spotifast.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .logoText {
+            font-family: "Spotify";
+            font-size: 2.5rem;
+            color: $text_accent;
+            margin-left: 2%;
         }
     }
 }

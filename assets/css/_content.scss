@@ -8,17 +8,18 @@
 
 //  PARA los subtitulos --> font-family: 'Poppins', sans-serif;
 
+
 main {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
 
     align-items: center;
 
     width: 100%;
 
-    background-color: $color_light;
+    background-color: $color_primary;
     color: $text_light;
 
     #content {
@@ -38,6 +39,12 @@ main {
         align-items: center;
         width: 80%;
 
+        padding-top: 2%;
+
+        h5 {
+            cursor: default;
+        }
+
         #durationSlider {
             flex-grow: 1;
         }
@@ -48,7 +55,8 @@ main {
         flex-direction: column;
         align-items: center;
 
-        width: 80%;
+        width: 70%;
+        min-width: $image_size;
 
         margin: 3% 0;
 
@@ -63,7 +71,7 @@ main {
 
             #normal {
                 display: flex;
-                justify-content: space-evenly;
+                justify-content: space-between;
 
                 width: 100%;
 
@@ -80,18 +88,38 @@ main {
                     }
                 }
             }
-
-            #volumeBar {
+            
+            #bottomControllers {
                 display: flex;
-
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
                 margin-top: 3%;
 
                 i {
                     font-size: 2rem;
                 }
 
-                #volume-range {
-                    flex-grow: 1;
+                #loop.active {
+                    color: $text_accent
+                }
+
+                #volumeBar {
+                    display: flex;
+                    align-items: center;
+                    
+                    min-width: 200px;
+
+                    #volume-range {
+                        width: 0;
+                        transition: all 0.5s cubic-bezier(0, 0.5, 1, 0.5);
+                    }
+
+                    &:hover {
+                        & #volume-range {
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }

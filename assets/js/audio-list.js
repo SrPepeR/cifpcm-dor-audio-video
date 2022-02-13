@@ -6,8 +6,8 @@ let SONGS =[
         img: "./assets/img/Dandy_de_Barcelona.jpg"
     },
     {
-        name: "El ciclista",
-        owner:"Que te avian",
+        name: "Que te avian",
+        owner:"El ciclista",
         path: "./assets/audio/Que_te_avian.mp3",
         img: "./assets/img/Que_te_avian.jpg"
     },

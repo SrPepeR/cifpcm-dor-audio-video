@@ -1,10 +1,14 @@
 $color_dark : #000000;
-$color_primary : #101010;
-$color_light : #121212;
+$color_primary : #121212;
+$color_light : #181818;
+$color_lighter : #303030;
 
 $text_light : #797b7a;
+$text_lighter : #a8a8a8;
 $text_light_max : #fff;
+
 $text_dark : #252525;
-$text_accent : rgb(28, 139, 0);
-$text_accent_transparent_mid : rgba(30, 215, 96, 0.25);
-$text_accent_transparent : rgba(30, 215, 96, 0.5);
+$text_accent : #2ebd59;
+$text_accent_transparent_mid : rgba(46, 189, 89, 0.25);
+$text_accent_transparent : rgba(46, 189, 89, 0.5);
+$text_accent_transparent_low : rgba(46, 189, 89, 0.75);

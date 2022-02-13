@@ -21,7 +21,7 @@
         <!-- FontsAwesome -->
         <script src="https://kit.fontawesome.com/0a50be58a8.js" crossorigin="anonymous"></script>
 
-        <title>XXXXXXXXX</title>
+        <title>Spotifast - Reproductor web</title>
     </head>
     <body>
         <aside>
@@ -33,19 +33,16 @@
                 <h3>Video</h3>
             </header>
         
-            <section id="list" class="left">
-            </section>
+            <section id="list" class="left"></section>
+            <footer>
+                <div class="logo"></div>
+                <p class="logoText">Spotifast</p>
+            </footer>
         </aside>
         
         <main>
             <section id="content">
                 <section class="image" alt="Imagen canción"></section>
-            </section>
-
-            <section id="duration">
-                <h5 id="current_duration">00:00</h5>
-                <input type="range" min="0" max="100" value="0" id="durationSlider"/> <!--CHANGEDURATION-->
-                <h5 id="all_duration">00:00</h5>
             </section>
             
             <section id="data">
@@ -56,13 +53,21 @@
 
                 <section id="controllers">
                     <section id="normal">
-                        <div id="previous" tabindex="0"><i class="fas fa-fast-backward" aria-hidden="true"></i></div> <!--PREVIOUS SONG-->
+                        <div id="previous"><i class="fas fa-backward" aria-hidden="true"></i></div> <!--PREVIOUS SONG-->
                         <div id="play"><i class="fas fa-play"  aria-hidden="true"></i></div> <!--JUSTPLAY-->
-                        <div id="next"><i class="fas fa-fast-forward"></i></div> <!--NEXT SONG-->
+                        <div id="next"><i class="fas fa-forward"></i></div> <!--NEXT SONG-->
                     </section>
-                    <section id="volumeBar">
-                        <div id="volume"><i class="fas fa-volume-down" aria-hidden="true"></i></div> <!-- EVENTO mute_sound-->
-                        <input type="range" min="0" max="100" value="70" id="volume-range"/> <!--EVENTO volume_change-->
+                    <section id="duration">
+                        <h5 id="current_duration">00:00</h5>
+                        <input type="range" min="0" max="100" value="0" id="durationSlider"/> <!--CHANGEDURATION-->
+                        <h5 id="all_duration">00:00</h5>
+                    </section>
+                    <section id="bottomControllers">
+                        <section id="volumeBar">
+                            <div id="volume"><i class="fas fa-volume-down" aria-hidden="true"></i></div> <!-- EVENTO mute_sound-->
+                            <input type="range" min="0" max="100" value="70" id="volume-range"/> <!--EVENTO volume_change-->
+                        </section>
+                        <div id="loop"><i class="fas fa-retweet"></i></div> <!--NEXT SONG-->
                     </section>
                 </section>
             </section>
