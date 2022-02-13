@@ -11,7 +11,6 @@ aside {
         display: flex;
         justify-content: center;
         align-items: center;
-
         cursor: default;
 
         height: 15%;
@@ -19,11 +18,29 @@ aside {
         max-height: 100px;
         width: 100%;
 
-        color: $text_light_max;
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Spotify";
+            font-size: 25px;
+            
+            height: 100%;
+            width: 50%;
+            padding:5px;
+            // border-top-left-radius: .3em;
+            // border-top-right-radius: .3em;
+            color: $text_light_max;
 
-        h3 {
-            font-size: 1.5rem;
+            &.active{
+                background: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
+            }
+
+            &:not(.active){
+                border-bottom: 1px solid $text_light_max;
+            }
         }
+        
     }
 
     #list {

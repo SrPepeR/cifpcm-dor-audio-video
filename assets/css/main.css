@@ -4,32 +4,6 @@
   src: url("../fonts/GothamMedium.ttf");
 }
 
-header #contSwitch {
-  background: #000000;
-  border: 1px solid #797b7a;
-  border-radius: 0.3em;
-  width: 65px;
-  height: 28px;
-  margin-right: 20px;
-}
-
-header #contSwitch #switch {
-  position: relative;
-  width: 25px;
-  height: 25px;
-  margin-top: .2px;
-  border: 1px solid white;
-  border-radius: 0.3em;
-  background: #797b7a;
-  left: 2%;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-}
-
-header #contSwitch .mover {
-  left: 55%;
-}
-
 .hide {
   display: none !important;
 }
@@ -253,11 +227,33 @@ aside header {
   min-height: 60px;
   max-height: 100px;
   width: 100%;
+}
+
+aside header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Spotify";
+  font-size: 25px;
+  height: 100%;
+  width: 50%;
+  padding: 5px;
   color: #fff;
 }
 
-aside header h3 {
-  font-size: 1.5rem;
+aside header div.active {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
+  background: linear-gradient(to right, rgba(46, 189, 89, 0.75), #000000 90%);
+}
+
+aside header div:not(.active) {
+  border-bottom: 1px solid #fff;
 }
 
 aside #list {
