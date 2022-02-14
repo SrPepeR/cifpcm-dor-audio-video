@@ -11,30 +11,40 @@ aside {
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: default;
 
         height: 15%;
         min-height: 60px;
         max-height: 100px;
         width: 100%;
-        background: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
+
+        &.left {
+            background: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
+        }
+
+        &.right {
+            background: linear-gradient(to left, $text_accent_transparent_low, $color_dark 90%);
+        }
         
-        div{
+        div {
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: "Spotify";
-            font-size: 25px;
+            font-size: 2rem;
             
             height: 100%;
             width: 50%;
-            padding:5px;
-            // border-top-left-radius: .3em;
-            // border-top-right-radius: .3em;
             color: $text_light_max;
-        }
-        #listVideo{
-            background: black;
+
+            cursor: pointer;
+
+            &#listAudio:not(.active) {
+                background: black;
+            }
+
+            &#listVideo:not(.active) {
+                background: black;
+            }
         }
         
     }

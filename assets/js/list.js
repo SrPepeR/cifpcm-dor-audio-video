@@ -1,8 +1,14 @@
 const LIST_DOM = {
-    list: document.querySelector("#list")
+    list: document.querySelector("#list"),
+    header: document.querySelector("header"),
+    audio: document.querySelector("#listAudio"),
+    video: document.querySelector("#listVideo")
 };
 
 var songs = new Array();
+
+LIST_DOM.audio.addEventListener("click", audioClicked);
+LIST_DOM.video.addEventListener("click", videoClicked);
 
 loadLists();
 
@@ -89,4 +95,20 @@ function playingStateChanged (index, tracks, playing) {
         tracks[index].firstChild.firstChild.classList.remove("fa-pause");
         tracks[index].firstChild.firstChild.classList.add("fa-play");
     }
+}
+
+function audioClicked () {
+    LIST_DOM.header.classList.add("left");
+    LIST_DOM.header.classList.remove("right");
+
+    LIST_DOM.audio.classList.add("active");
+    LIST_DOM.video.classList.remove("active");
+}
+
+function videoClicked () {
+    LIST_DOM.header.classList.remove("left");
+    LIST_DOM.header.classList.add("right");
+    
+    LIST_DOM.audio.classList.remove("active");
+    LIST_DOM.video.classList.add("active");
 }
