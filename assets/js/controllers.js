@@ -207,6 +207,7 @@ function mute_sound(){
     }
     
     CONTROLLERS_DOM.volumeRange.value = track.volume * 100;
+    handleInputChange(CONTROLLERS_DOM.volumeRange);
 }
 
 function loopUnloop () {
