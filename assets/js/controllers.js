@@ -38,15 +38,27 @@ var tracks;
 var display;
 
 
-function load_tracks (playlist, index_no, displayplace) {
+function load_tracks (playlist, index, displayplace) {
     tracks = playlist;
     display = displayplace;
+    index_no = index;
+
+    if (tracks == SONGS) {
+        track = document.createElement("audio");
+        VIDEO_DOM.imagenVideo.classList.add("hide");
+        AUDIO_DOM.imagenCancion.classList.remove("hide");
+        
+        display.style.backgroundImage = "url(" + tracks[index_no].img + ")";
+    } else {
+        track = VIDEO_DOM.imagenVideo;
+        AUDIO_DOM.imagenCancion.classList.add("hide");
+        VIDEO_DOM.imagenVideo.classList.remove("hide");
+    }
 
     reset_slider();
     track.src = playlist[index_no].path;
     CONTROLLERS_DOM.title.textContent= tracks[index_no].name;
     CONTROLLERS_DOM.artist.textContent = tracks[index_no].owner;
-    display.style.backgroundImage = "url(" + tracks[index_no].img + ")";
     track.load();
     timer = setInterval(range_slider , 1000);
 }
@@ -102,15 +114,14 @@ function next(){
     if(index_no < tracks.length-1)
     {
         index_no += 1;
-        load_tracks(tracks, index_no, display);
-        play();
     }
     else
     {
         index_no = 0;
-        load_tracks(tracks, index_no, display);
-        play();
     }
+
+    changeActualTrack(index_no);
+    play();
     
     if (tracks == SONGS) {
         clearList(index_no, songs);
@@ -123,21 +134,31 @@ function previous(){
     if(index_no > 0)
     {
         index_no -= 1;
-        load_tracks(tracks, index_no, display);
-        play();
     }
     else
     {
         index_no = tracks.length - 1;
-        load_tracks(tracks, index_no, display);
-        play();
     }
+
+    changeActualTrack(index_no);
+    play();
     
     if (tracks == SONGS) {
         clearList(index_no, songs);
     } else {
         clearList(index_no, videos);
     }
+}
+
+function changeActualTrack (index) {
+    index_no = index;
+
+    pause();
+    
+    display.style.backgroundImage = "url(" + tracks[index_no].img + ")";
+    track.src = tracks[index_no].path;
+    CONTROLLERS_DOM.title.textContent= tracks[index_no].name;
+    CONTROLLERS_DOM.artist.textContent = tracks[index_no].owner;
 }
 
 function volume_change(){
@@ -214,3 +235,5 @@ function loopUnloop () {
     track.loop = !track.loop;
     CONTROLLERS_DOM.loop.classList.toggle("active");
 }
+
+load_tracks(SONGS, index_no, AUDIO_DOM.imagenCancion);

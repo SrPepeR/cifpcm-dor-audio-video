@@ -13,9 +13,9 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
-
     align-items: center;
+
+    flex-wrap: wrap;
 
     width: 100%;
 
@@ -23,6 +23,9 @@ main {
     color: $text_light;
 
     #content {
+        justify-content: center;
+        width: 80%;
+
         .image {
             width: $image_size;
             height: $image_size;
@@ -31,6 +34,11 @@ main {
             background-size: cover;
     
             margin: 1px;
+        }
+
+        video {
+            max-height: $image_size * 1.6;
+            max-width: 100%;
         }
     }
 

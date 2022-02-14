@@ -25,14 +25,21 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
   background-color: #121212;
   color: #797b7a;
+}
+
+main #content {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
 }
 
 main #content .image {
@@ -42,6 +49,11 @@ main #content .image {
   background-position: center;
   background-size: cover;
   margin: 1px;
+}
+
+main #content video {
+  max-height: 480px;
+  max-width: 100%;
 }
 
 main #duration {
@@ -206,8 +218,7 @@ aside {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 30%;
-  min-width: 270px;
+  width: 270px;
   height: 100%;
   background-color: #000000;
 }
@@ -222,20 +233,21 @@ aside header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 15%;
-  min-height: 60px;
-  max-height: 100px;
+  height: 80px;
   width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(46, 189, 89, 0.75)), color-stop(45%, #000000), color-stop(55%, #000000), to(rgba(46, 189, 89, 0.75)));
+  background: linear-gradient(to right, rgba(46, 189, 89, 0.75), #000000 45%, #000000 55%, rgba(46, 189, 89, 0.75));
+  background-size: 540px 100%;
 }
 
 aside header.left {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
-  background: linear-gradient(to right, rgba(46, 189, 89, 0.75), #000000 90%);
+  -webkit-animation: headerToRight 1s forwards;
+          animation: headerToRight 1s forwards;
 }
 
 aside header.right {
-  background: -webkit-gradient(linear, right top, left top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
-  background: linear-gradient(to left, rgba(46, 189, 89, 0.75), #000000 90%);
+  -webkit-animation: headerToLeft 1s forwards;
+          animation: headerToLeft 1s forwards;
 }
 
 aside header div {
@@ -249,19 +261,19 @@ aside header div {
       -ms-flex-align: center;
           align-items: center;
   font-family: "Spotify";
-  font-size: 2rem;
+  font-size: 1.5rem;
   height: 100%;
   width: 50%;
   color: #fff;
   cursor: pointer;
 }
 
-aside header div#listAudio:not(.active) {
-  background: black;
+aside header div#listAudio:not(.active):hover {
+  background: rgba(46, 189, 89, 0.5);
 }
 
-aside header div#listVideo:not(.active) {
-  background: black;
+aside header div#listVideo:not(.active):hover {
+  background: rgba(46, 189, 89, 0.5);
 }
 
 aside #list {
@@ -271,7 +283,8 @@ aside #list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  width: 270px;
+  overflow: hidden;
 }
 
 aside #list .list {
@@ -285,8 +298,8 @@ aside #list .list {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
+  position: relative;
+  width: 270px;
 }
 
 aside #list .list .list-element {
@@ -297,7 +310,7 @@ aside #list .list .list-element {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: 270px;
   height: 80px;
   padding: 0 5%;
 }
@@ -350,11 +363,6 @@ aside #list .list .list-element .text .owner {
   font-weight: normal;
 }
 
-aside #list .list .list-element.active {
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
-  background-image: linear-gradient(to right, rgba(46, 189, 89, 0.75), #000000 90%);
-}
-
 aside #list .list .list-element.active .img .playing {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -385,6 +393,26 @@ aside #list .list .list-element:active {
   background-image: linear-gradient(to right, rgba(46, 189, 89, 0.5), #000000 90%);
 }
 
+aside #list .list#listLeft .list-element.active {
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
+  background-image: linear-gradient(to right, rgba(46, 189, 89, 0.75), #000000 90%);
+}
+
+aside #list .list#listRight .list-element.active {
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
+  background-image: linear-gradient(to left, rgba(46, 189, 89, 0.75), #000000 90%);
+}
+
+aside #list.left .list {
+  -webkit-animation: first 1s forwards;
+          animation: first 1s forwards;
+}
+
+aside #list.right .list {
+  -webkit-animation: second 1s forwards;
+          animation: second 1s forwards;
+}
+
 aside footer {
   height: 10%;
   width: 100%;
@@ -413,6 +441,78 @@ aside footer .logoText {
   font-size: 2.5rem;
   color: #2ebd59;
   margin-left: 2%;
+}
+
+@-webkit-keyframes headerToRight {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes headerToRight {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@-webkit-keyframes headerToLeft {
+  0% {
+    background-position: 00% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes headerToLeft {
+  0% {
+    background-position: 00% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+@-webkit-keyframes first {
+  0% {
+    left: -270px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes first {
+  0% {
+    left: -270px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes second {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -270px;
+  }
+}
+
+@keyframes second {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -270px;
+  }
 }
 
 * {

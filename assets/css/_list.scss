@@ -1,8 +1,7 @@
 aside {
     display: flex;
     flex-direction: column;
-    width: 30%;
-    min-width: 270px;
+    width: 270px;
     height: 100%;
     
     background-color: $color_dark;
@@ -12,17 +11,18 @@ aside {
         justify-content: center;
         align-items: center;
 
-        height: 15%;
-        min-height: 60px;
-        max-height: 100px;
+        height: 80px;
         width: 100%;
+        
+        background: linear-gradient(to right, $text_accent_transparent_low, $color_dark 45%, $color_dark 55%,$text_accent_transparent_low);
+        background-size: 540px 100%;
 
         &.left {
-            background: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
+            animation: headerToRight 1s forwards;
         }
 
         &.right {
-            background: linear-gradient(to left, $text_accent_transparent_low, $color_dark 90%);
+            animation: headerToLeft 1s forwards;
         }
         
         div {
@@ -30,7 +30,7 @@ aside {
             justify-content: center;
             align-items: center;
             font-family: "Spotify";
-            font-size: 2rem;
+            font-size: 1.5rem;
             
             height: 100%;
             width: 50%;
@@ -38,12 +38,12 @@ aside {
 
             cursor: pointer;
 
-            &#listAudio:not(.active) {
-                background: black;
+            &#listAudio:not(.active):hover {
+                background: $text_accent_transparent;
             }
 
-            &#listVideo:not(.active) {
-                background: black;
+            &#listVideo:not(.active):hover {
+                background: $text_accent_transparent;
             }
         }
         
@@ -53,21 +53,24 @@ aside {
         flex-grow: 1;
         display: flex;
 
-        width: 100%;
+        width: 270px;
+        overflow: hidden;
 
         .list {
             display: flex;
             flex-direction: column;
             align-items: center;
+            
+            position: relative;
 
-            flex-basis: 100%;
+            width: 270px;
 
             .list-element {
                 cursor: pointer;
                 display: flex;
                 align-items: center;
 
-                width: 100%;
+                width: 270px;
                 height: 80px;
 
                 padding: 0 5%;
@@ -118,8 +121,6 @@ aside {
                 }
 
                 &.active {
-                    background-image: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
-
                     & .img .playing {
                         display: flex;
                     }
@@ -147,6 +148,22 @@ aside {
                     background-image: linear-gradient(to right, $text_accent_transparent, $color_dark 90%);
                 }
             }
+
+            &#listLeft .list-element.active {
+                background-image: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
+            }
+
+            &#listRight .list-element.active {
+                background-image: linear-gradient(to left, $text_accent_transparent_low, $color_dark 90%);
+            }
+        }
+
+        &.left .list {
+            animation: first 1s forwards;
+        }
+
+        &.right .list {
+            animation: second 1s forwards;
         }
     }
 
@@ -174,5 +191,35 @@ aside {
             color: $text_accent;
             margin-left: 2%;
         }
+    }
+}
+
+@keyframes headerToRight {
+    0% {background-position: 100% 0%}
+    100% {background-position: 0% 0%}
+}
+
+@keyframes headerToLeft {
+    0% {background-position: 00% 0%}
+    100% {background-position: 100% 0%}
+}
+
+@keyframes first {
+    0% {
+        left: -270px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes second {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -270px;
     }
 }
