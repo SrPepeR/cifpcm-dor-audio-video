@@ -17,7 +17,8 @@ aside {
         min-height: 60px;
         max-height: 100px;
         width: 100%;
-
+        background: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
+        
         div{
             display: flex;
             justify-content: center;
@@ -31,14 +32,9 @@ aside {
             // border-top-left-radius: .3em;
             // border-top-right-radius: .3em;
             color: $text_light_max;
-
-            &.active{
-                background: linear-gradient(to right, $text_accent_transparent_low, $color_dark 90%);
-            }
-
-            &:not(.active){
-                border-bottom: 1px solid $text_light_max;
-            }
+        }
+        #listVideo{
+            background: black;
         }
         
     }

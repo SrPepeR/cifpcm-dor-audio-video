@@ -227,6 +227,8 @@ aside header {
   min-height: 60px;
   max-height: 100px;
   width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
+  background: linear-gradient(to right, rgba(46, 189, 89, 0.75), #000000 90%);
 }
 
 aside header div {
@@ -247,13 +249,8 @@ aside header div {
   color: #fff;
 }
 
-aside header div.active {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(46, 189, 89, 0.75)), color-stop(90%, #000000));
-  background: linear-gradient(to right, rgba(46, 189, 89, 0.75), #000000 90%);
-}
-
-aside header div:not(.active) {
-  border-bottom: 1px solid #fff;
+aside header #listVideo {
+  background: black;
 }
 
 aside #list {
