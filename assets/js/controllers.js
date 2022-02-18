@@ -8,6 +8,7 @@ const CONTROLLERS_DOM = {
     botonVolumeIcon: document.querySelector("#volume i"),
     volumeRange: document.querySelector("#volume-range"),
     loop: document.querySelector("#loop"),
+    subtitles: document.querySelector("#subtitles"),
 
     //BARRA DURACION
     current: document.querySelector("#current_duration"),
@@ -25,6 +26,7 @@ CONTROLLERS_DOM.botonPlay.addEventListener("click", justplay);
 CONTROLLERS_DOM.barraDuracion.addEventListener("click", change_duration);
 CONTROLLERS_DOM.botonVolume.addEventListener("click", mute_sound);
 CONTROLLERS_DOM.volumeRange.addEventListener("change", volume_change);
+CONTROLLERS_DOM.subtitles.addEventListener("change", subtitles);
 CONTROLLERS_DOM.loop.addEventListener("click", loopUnloop);
 
 let index_no = 0;
@@ -37,8 +39,12 @@ let lastVolume = 0.7;
 var tracks;
 var display;
 
+var hided = false;
+
 
 function load_tracks (playlist, index, displayplace) {
+    clearSubtitles();
+
     tracks = playlist;
     display = displayplace;
     index_no = index;
@@ -50,9 +56,9 @@ function load_tracks (playlist, index, displayplace) {
         
         display.style.backgroundImage = "url(" + tracks[index_no].img + ")";
     } else {
+        hided = false;
         track = VIDEO_DOM.imagenVideo;
-        AUDIO_DOM.imagenCancion.classList.add("hide");
-        VIDEO_DOM.imagenVideo.classList.remove("hide");
+        setInterval(videoCargado, 1000);
     }
 
     reset_slider();
@@ -61,6 +67,15 @@ function load_tracks (playlist, index, displayplace) {
     CONTROLLERS_DOM.artist.textContent = tracks[index_no].owner;
     track.load();
     timer = setInterval(range_slider , 1000);
+}
+
+function videoCargado () {
+    if (!hided && track.readyState === 4) {
+        //Loaded
+        VIDEO_DOM.imagenVideo.classList.remove("hide");
+        AUDIO_DOM.imagenCancion.classList.add("hide");
+        hided = true;
+    }
 }
 
 
@@ -155,10 +170,16 @@ function changeActualTrack (index) {
 
     pause();
     
-    display.style.backgroundImage = "url(" + tracks[index_no].img + ")";
+    if (tracks == SONGS) {
+        display.style.backgroundImage = "url(" + tracks[index_no].img + ")";
+    }
+    
     track.src = tracks[index_no].path;
     CONTROLLERS_DOM.title.textContent= tracks[index_no].name;
     CONTROLLERS_DOM.artist.textContent = tracks[index_no].owner;
+    
+    clearSubtitles();
+    subtitles();
 }
 
 function volume_change(){
@@ -237,3 +258,27 @@ function loopUnloop () {
 }
 
 load_tracks(SONGS, index_no, AUDIO_DOM.imagenCancion);
+
+function subtitles () {
+    var subtitles = track.textTracks;
+
+    clearSubtitles();
+    if (CONTROLLERS_DOM.subtitles.selectedIndex > 0 && CONTROLLERS_DOM.title.textContent == VIDEOS[1].name) {
+        //Activado
+        subtitles[CONTROLLERS_DOM.subtitles.selectedIndex - 1].mode = "showing";
+        debugger
+        CONTROLLERS_DOM.subtitles.classList.add("on");
+    } else {
+        CONTROLLERS_DOM.subtitles.classList.remove("on");
+    }
+}
+
+function clearSubtitles () {
+    var subtitles = track.textTracks;
+
+    Array.from(subtitles).forEach(subtitle => {
+        subtitle.mode = "disabled";
+    });
+
+    CONTROLLERS_DOM.subtitles.classList.remove("on");
+}

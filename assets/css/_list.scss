@@ -81,7 +81,7 @@ aside {
                     
                     background-repeat: no-repeat;
                     background-position: center;
-                    background-size: cover;
+                    background-size: contain;
 
                     margin-right: 20px;
 
@@ -104,17 +104,17 @@ aside {
                 .text {
                     display: flex;
                     flex-direction: column;
-
+                    max-width: 200px;
                     .title {
                         font-family: $primary_font;
-                        font-size: 1.2rem;
+                        font-size: 1rem;
                         color: $text_light;
                         font-weight: bold;
                     }
 
                     .owner {
                         font-family: $secondary_font;
-                        font-size: 0.9rem;
+                        font-size: 0.8rem;
                         color: $text_light;
                         font-weight: normal;
                     }
@@ -182,7 +182,7 @@ aside {
             background-image: url("../img/spotifast.svg");
             background-repeat: no-repeat;
             background-position: center;
-            background-size: contain;
+            background-size: cover;
         }
 
         .logoText {

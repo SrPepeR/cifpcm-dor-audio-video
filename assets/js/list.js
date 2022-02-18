@@ -165,6 +165,8 @@ function audioClicked () {
         load_tracks (SONGS, 0, AUDIO_DOM.imagenCancion);
 
         clearList(index_no, songs);
+        document.querySelector(".image").classList.remove("ampliar");
+        document.querySelector(".image").classList.add("disminuir");
     }
     
 }
@@ -184,5 +186,7 @@ function videoClicked () {
         load_tracks (VIDEOS, 0, VIDEO_DOM.imagenVideo);
 
         clearList(index_no, videos);
+        document.querySelector(".image").classList.add("ampliar");
+        document.querySelector(".image").classList.remove("disminuir");
     }
 }

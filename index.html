@@ -40,7 +40,10 @@
         
         <main>
             <section id="content">
-                <video class="hide"></video>
+                <video class="hide">
+                    <track src="./assets/subtitulos/Skippy en el balcón-es.vtt" kind="subtitles" srclang="es" label="Español">
+                    <track src="./assets/subtitulos/Skippy en el balcón-en.vtt" kind="subtitles" srclang="en" label="English">
+                </video>
                 <section class="image" alt="Imagen canción"></section>
             </section>
             
@@ -66,7 +69,15 @@
                             <div id="volume"><i class="fas fa-volume-down" aria-hidden="true"></i></div> <!-- EVENTO mute_sound-->
                             <input type="range" min="0" max="100" value="70" id="volume-range"/> <!--EVENTO volume_change-->
                         </section>
-                        <div id="loop"><i class="fas fa-retweet"></i></div> <!--NEXT SONG-->
+                        
+                        <section id="others">
+                            <select name="subtitles" id="subtitles">
+                                <option value="">&#xf20a;</option>
+                                <option value="es">ES</option>
+                                <option value="en">EN</option>
+                            </select>
+                            <div id="loop"><i class="fas fa-retweet"></i></div> <!--NEXT SONG-->
+                        </section>
                     </section>
                 </section>
             </section>
